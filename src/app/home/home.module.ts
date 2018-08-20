@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { 
   MatCardModule, 
   MatFormFieldModule, 
@@ -8,13 +9,14 @@ import {
   MatInputModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatButtonModule
-  
+  MatButtonModule,  
 } from '@angular/material';
+
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,9 @@ import {
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     HomeComponent,
@@ -34,7 +38,9 @@ import {
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class HomeModule { }
