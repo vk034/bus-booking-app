@@ -1,0 +1,35 @@
+.travelName {
+    font-size: 18px;
+    font-weight: bolder;
+    color: #3E4D62;
+}
+
+.boardTime {
+    font-weight: bold;
+    font-size: 22px;
+    color: #3E3E52;
+}
+
+.dropTime {
+    font-weight: normal;
+    font-size: 20px;
+    color: #703E68;
+}
+
+.travelTime {
+    font-weight: normal;
+    font-size: 18px;
+    color: #CDA38C;
+}
+
+.totalCost {
+    font-weight: bold;
+    font-size: 22px;
+    color: #3E3E52;
+}
+
+.default {
+    font-weight: normal;
+    font-size: 18px;
+    color: #CDA38C;
+}
