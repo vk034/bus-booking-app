@@ -1,0 +1,20 @@
+export interface BusList {
+    travelName: string,
+    travelID: number,
+    driverID: number,
+    busID: number,
+    busType: string,
+    busSeats: number,
+    movie: boolean,
+    chargingPoints: boolean,
+    blanket: boolean,
+    waterBottle: boolean,
+    wifi: boolean,
+    journeyID: number,
+    source: string,
+    destination: string,
+    bordingTime: string,
+    dropingTime: string,
+    travelDate: Date,
+    fare: number
+}
