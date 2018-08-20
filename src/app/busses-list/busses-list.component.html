@@ -5,41 +5,44 @@
         <mat-card>Filters</mat-card>
       </div>
       <div class="col-lg-10">
-        <mat-card>
-          <div class="row">
-            <div class="col-md-3 travelName">
-              <span><i class="fa fa-bus"></i>&nbsp;Morning star travels</span>
+        <div *ngFor="let bus of busList">
+          <mat-card>
+            <div class="row">
+              <div class="col-md-3 travelName">
+                <span><i class="fa fa-bus"></i>&nbsp;{{bus.travelName}}</span>
+              </div>
+              <div class="col-md-2 boardTime">
+                <span><i class="fa fa-clock-o"></i>&nbsp;{{bus.bordingTime}}</span>
+              </div>
+              <div class="col-md-2 dropTime">
+                <span><i class="fa fa-clock-o"></i>&nbsp;{{bus.dropingTime}}</span>
+              </div>
+              <div class="col-md-2 travelTime">
+                <span>06h 30m</span>
+              </div>
+              <div class="col-md-1 totalCost">
+                <span><i class="fa fa-inr"></i>&nbsp;{{bus.fare}}</span>
+              </div>
+              <div class="col-md-2 default">
+                <span>41 Seats available</span>
+              </div>
             </div>
-            <div class="col-md-2 boardTime">
-              <span><i class="fa fa-clock-o"></i>&nbsp;23:30</span>
+            <div class="row">
+              <div class="col-md-3 default">
+                <span>{{bus.busType}}</span>
+              </div>
+              <div class="col-md-2 default">
+                <span><i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;{{bus.source}}</span>
+              </div>
+              <div class="col-md-2 default">
+                <span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{bus.destination}}</span>
+              </div>
             </div>
-            <div class="col-md-2 dropTime">
-              <span><i class="fa fa-clock-o"></i>&nbsp;07:00</span>
-            </div>
-            <div class="col-md-2 travelTime">
-              <span>06h 30m</span>
-            </div>
-            <div class="col-md-1 totalCost">
-              <span><i class="fa fa-inr"></i>&nbsp;600</span>
-            </div>
-            <div class="col-md-2 default">
-              <span>41 Seats available</span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 default">
-              <span>A/C Sleeper (2+1)</span>
-            </div>
-            <div class="col-md-2 default">
-              <span><i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;Vijayawada</span>
-            </div>
-            <div class="col-md-2 default">
-              <span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Hyderabad</span>
-            </div>
-          </div>
-          <button mat-raised-button class="btn btn-info pull-right">View Seats</button>
-          <div class="clearfix"></div>
-        </mat-card>
+            <button mat-raised-button class="btn btn-info pull-right">View Seats</button>
+            <div class="clearfix"></div>
+          </mat-card>
+          <br>
+        </div>
       </div>
     </div>
   </div>
