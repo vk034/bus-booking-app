@@ -9,7 +9,8 @@ import {
   MatInputModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatButtonModule,  
+  MatButtonModule,
+  MatAutocompleteModule,  
 } from '@angular/material';
 
 
@@ -29,6 +30,7 @@ import {
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
   ],
   exports: [
     HomeComponent,
@@ -41,6 +43,7 @@ import {
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
   ]
 })
 export class HomeModule { }
