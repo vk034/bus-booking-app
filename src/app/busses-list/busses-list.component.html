@@ -2,26 +2,49 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-2">
-        <mat-card>Filters</mat-card>
+        <div class="container-fluid">
+          <div class="row">
+            <mat-card>
+              <h6 style="font-weight: bold; font-size: 0.9em;">BUS TYPES</h6>
+              <mat-checkbox color="primary">A/C</mat-checkbox>
+              <mat-checkbox color="primary">Non A/C</mat-checkbox>
+            </mat-card>
+          </div>
+          <br>
+          <div class="row">
+            <mat-card>
+              <h6 style="font-weight: bold; font-size: 0.9em;">AMENITIES</h6>
+              <mat-checkbox color="primary" (change)="onChkChange('movie')">Movie</mat-checkbox>
+              <mat-checkbox color="primary" (change)="onChkChange('chargingPoints')">Charging Points</mat-checkbox>
+              <mat-checkbox color="primary" (change)="onChkChange('blanket')">Blanket</mat-checkbox>
+              <mat-checkbox color="primary" (change)="onChkChange('waterBottle')">Water Bottle</mat-checkbox>
+              <mat-checkbox color="primary" (change)="onChkChange('wifi')">WiFi</mat-checkbox>
+            </mat-card>
+          </div>
+        </div>
       </div>
       <div class="col-lg-10">
-        <div *ngFor="let bus of busList">
+        <div *ngFor="let bus of filterBusList">
           <mat-card>
             <div class="row">
               <div class="col-md-3 travelName">
-                <span><i class="fa fa-bus"></i>&nbsp;{{bus.travelName}}</span>
+                <span>
+                  <i class="fa fa-bus"></i>&nbsp;{{bus.travelName}}</span>
               </div>
               <div class="col-md-2 boardTime">
-                <span><i class="fa fa-clock-o"></i>&nbsp;{{bus.bordingTime}}</span>
+                <span>
+                  <i class="fa fa-clock-o"></i>&nbsp;{{bus.bordingTime}}</span>
               </div>
               <div class="col-md-2 dropTime">
-                <span><i class="fa fa-clock-o"></i>&nbsp;{{bus.dropingTime}}</span>
+                <span>
+                  <i class="fa fa-clock-o"></i>&nbsp;{{bus.dropingTime}}</span>
               </div>
               <div class="col-md-2 travelTime">
                 <span>06h 30m</span>
               </div>
               <div class="col-md-1 totalCost">
-                <span><i class="fa fa-inr"></i>&nbsp;{{bus.fare}}</span>
+                <span>
+                  <i class="fa fa-inr"></i>&nbsp;{{bus.fare}}</span>
               </div>
               <div class="col-md-2 default">
                 <span>41 Seats available</span>
@@ -32,10 +55,29 @@
                 <span>{{bus.busType}}</span>
               </div>
               <div class="col-md-2 default">
-                <span><i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;{{bus.source}}</span>
+                <span>
+                  <i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;{{bus.source}}</span>
               </div>
               <div class="col-md-2 default">
-                <span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{bus.destination}}</span>
+                <span>
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{bus.destination}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-1">
+                  <h6 title="Water Bottle"><i class="fa fa-tint" aria-hidden="true"></i></h6>
+              </div>
+              <div class="col-md-1">
+                  <h6><i class="fa fa-wifi" aria-hidden="true"></i></h6>
+              </div>
+              <div class="col-md-1">
+                  <h6><i class="fa fa-plug" aria-hidden="true"></i></h6>
+              </div>
+              <div class="col-md-1">
+                  <h6><i class="fa fa-bed" aria-hidden="true"></i></h6>
+              </div>
+              <div class="col-md-1">
+                  <h6><i class="fa fa-film" aria-hidden="true"></i></h6>
               </div>
             </div>
             <button mat-raised-button class="btn btn-info pull-right">View Seats</button>

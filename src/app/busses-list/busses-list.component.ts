@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BusList } from '../shared/iBusList';
-
+import { Router } from '@angular/router';
 import { BussesListService } from '../shared/busses-list.service';
 
 @Component({
@@ -10,15 +10,44 @@ import { BussesListService } from '../shared/busses-list.service';
 })
 export class BussesListComponent implements OnInit {
   busList: BusList[];
+  filterBusList: BusList[];
   errMsg: string;
+  amenities = [];
 
-  constructor(private bussesListService: BussesListService) {
-    this.bussesListService.getBusList().subscribe(data=>{
-      this.busList = data;
-    }, error => {this.errMsg = error});
+  constructor(private router: Router, private bussesListService: BussesListService){
+    this.bussesListService.observeSearchData.subscribe(data=>{
+      if(!data){this.router.navigate(['/home'])}
+      this.bussesListService.getBusList().subscribe(filteredBusList=>{
+        this.busList = filteredBusList.filter(bus=>{
+          for(let option of Object.keys(data)){
+            if(bus[option] != data[option]){
+              return false;
+            }
+          }
+          return true;
+        }); 
+        this.filterBusList= this.busList;
+      }, error => {this.errMsg = error});
+    });
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  //Aminities Filter Functions
+  onChkChange(ameniti: string){
+    let id = this.amenities.indexOf(ameniti);
+    if(id > -1){
+      this.amenities.splice(id, 1);
+    }else{
+      this.amenities.push(ameniti);
+    }
+    console.log(this.amenities);
+    this.filterBusList = this.busList.filter(bus =>{
+      for(let option of this.amenities) {
+        if(!bus[option]) return false;
+      }
+      return true;
+    })
   }
 
 }

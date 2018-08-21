@@ -4,7 +4,8 @@ import { BussesListComponent } from './busses-list.component';
 import {
   MatCardModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 @NgModule({
@@ -15,13 +16,15 @@ import {
     CommonModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ],
   exports: [
     BussesListComponent,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ]
 })
 export class BussesListModule { }
