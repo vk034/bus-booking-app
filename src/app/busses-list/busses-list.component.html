@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="col-lg-10">
-        <div *ngFor="let bus of filterBusList">
+        <div *ngFor="let bus of filterBusList; let i=index">
           <mat-card>
             <div class="row">
               <div class="col-md-3 travelName">
@@ -80,9 +80,16 @@
                   <h6><i class="fa fa-film" aria-hidden="true"></i></h6>
               </div>
             </div>
-            <button mat-raised-button class="btn btn-info pull-right">View Seats</button>
+            
+            <button mat-raised-button class="btn btn-info pull-right" (click)="toggle(i)">View Seats</button>
             <div class="clearfix"></div>
           </mat-card>
+          <br>
+          <div class="row">
+            <div class="col-lg-5" style="width: 40%;">
+                <app-seatlayout *ngIf="show[i]"></app-seatlayout>
+            </div>
+          </div>
           <br>
         </div>
       </div>

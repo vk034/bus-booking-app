@@ -1,0 +1,6 @@
+<mat-grid-list cols="10" rowHeight="1:1" >
+    <p *ngFor="let number of numbers; let i = index">
+      <mat-grid-tile *ngIf="forbidnumbers.indexOf(number)>-1" hidden>&nbsp</mat-grid-tile> 
+      <mat-grid-tile id=i (click)="display()" *ngIf="forbidnumbers.indexOf(number)==-1" style="cursor: pointer;background-color: #ADD8E6">{{number}}</mat-grid-tile>
+</p>
+</mat-grid-list>
