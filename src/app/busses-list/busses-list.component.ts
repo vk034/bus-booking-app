@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BusList } from '../shared/iBusList';
 import { Router } from '@angular/router';
 import { BussesListService } from '../shared/busses-list.service';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-busses-list',
@@ -13,6 +14,8 @@ export class BussesListComponent implements OnInit {
   filterBusList: BusList[];
   errMsg: string;
   amenities = [];
+  public show=Array(12).fill(false);
+  //public count=Array(20);
 
   constructor(private router: Router, private bussesListService: BussesListService){
     this.bussesListService.observeSearchData.subscribe(data=>{
@@ -32,6 +35,13 @@ export class BussesListComponent implements OnInit {
   }
 
   ngOnInit() {}
+ 
+  toggle(index:number)
+  {
+    //console.log("before"+this.show[index]);
+    this.show[index]=!this.show[index];
+    
+  }
 
   //Aminities Filter Functions
   onChkChange(ameniti: string){

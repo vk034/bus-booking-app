@@ -7,17 +7,20 @@ import {
   MatIconModule,
   MatCheckboxModule
 } from '@angular/material';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { SeatlayoutComponent } from './seatlayout/seatlayout.component';
 
 @NgModule({
   declarations: [ 
-    BussesListComponent 
+    BussesListComponent, SeatlayoutComponent 
   ],
   imports: [
     CommonModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatGridListModule
   ],
   exports: [
     BussesListComponent,
