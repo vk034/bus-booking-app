@@ -20,7 +20,7 @@ export class InMemoryDataService implements InMemoryDbService {
           "destination":"Bhimavaram",
           "bordingTime":"23:00",
           "dropingTime":"09:00",
-          "travelDate":"23/08/2018",
+          "travelDate":"31/08/2018",
           "fare":800
       },
       {
@@ -40,7 +40,7 @@ export class InMemoryDataService implements InMemoryDbService {
           "destination":"Bhimavaram",
           "bordingTime":"20:00",
           "dropingTime":"23:30",
-          "travelDate":"23/08/2018",
+          "travelDate":"31/08/2018",
           "fare":200
       },
       {
