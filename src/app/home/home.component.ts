@@ -30,7 +30,9 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('picker') datePicker: MatDatepicker < Date > ;
 
-  constructor(private router: Router, private bussesListService: BussesListService) {
+  constructor(private router: Router, private bussesListService: BussesListService) { }
+
+  ngOnInit() {
     this.bussesListService.getBusList().subscribe(data => {
       data.forEach(element => {
         if (this.fromPlace.indexOf(element.source) === -1) {
@@ -43,10 +45,7 @@ export class HomeComponent implements OnInit {
     }, error => {
       this.errMsg = error
     });
-  }
 
-
-  ngOnInit() {
     this.filteredFrom = this.from.valueChanges.pipe(
       startWith(''),
       map(value => this._filterFrom(value)));

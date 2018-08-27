@@ -63,21 +63,21 @@
                   <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{bus.destination}}</span>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-1">
+            <div class="row" style="width: 200px;">
+              <div class="col-md-1" *ngIf="bus.waterBottle">
                   <h6 title="Water Bottle"><i class="fa fa-tint" aria-hidden="true"></i></h6>
               </div>
-              <div class="col-md-1">
-                  <h6><i class="fa fa-wifi" aria-hidden="true"></i></h6>
+              <div class="col-md-1" *ngIf="bus.wifi">
+                  <h6 title="WiFi"><i class="fa fa-wifi" aria-hidden="true"></i></h6>
               </div>
-              <div class="col-md-1">
-                  <h6><i class="fa fa-plug" aria-hidden="true"></i></h6>
+              <div class="col-md-1" *ngIf="bus.chargingPoints">
+                  <h6 title="Charging Points"><i class="fa fa-plug" aria-hidden="true"></i></h6>
               </div>
-              <div class="col-md-1">
-                  <h6><i class="fa fa-bed" aria-hidden="true"></i></h6>
+              <div class="col-md-1" *ngIf="bus.blanket">
+                  <h6 title="Blanket"><i class="fa fa-bed" aria-hidden="true"></i></h6>
               </div>
-              <div class="col-md-1">
-                  <h6><i class="fa fa-film" aria-hidden="true"></i></h6>
+              <div class="col-md-1" *ngIf="bus.movie">
+                  <h6 title="Movie"><i class="fa fa-film" aria-hidden="true"></i></h6>
               </div>
             </div>
             
@@ -85,11 +85,7 @@
             <div class="clearfix"></div>
           </mat-card>
           <br>
-          <div class="row">
-            <div class="col-lg-5" style="width: 40%;">
-                <app-seatlayout *ngIf="show[index]"></app-seatlayout>
-            </div>
-          </div>
+          <app-seatlayout *ngIf="show[index]"></app-seatlayout>
           <br>
         </div>
       </div>

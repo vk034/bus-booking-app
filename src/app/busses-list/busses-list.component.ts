@@ -16,9 +16,11 @@ export class BussesListComponent implements OnInit {
   showBusSeats: boolean = false;
   public show = Array().fill(false);
 
-  constructor(private router: Router, private bussesListService: BussesListService){
+  constructor(private router: Router, private bussesListService: BussesListService){ }
+
+  ngOnInit() {
     this.bussesListService.observeSearchData.subscribe(data=>{
-      if(!data){this.router.navigate(['/home'])}
+      if(!data || !Object.keys(data).length){this.router.navigate(['/home'])}
       this.bussesListService.getBusList().subscribe(filteredBusList=>{
         this.busList = filteredBusList.filter(bus=>{
           for(let option of Object.keys(data)){
@@ -32,8 +34,6 @@ export class BussesListComponent implements OnInit {
       }, error => {this.errMsg = error});
     });
   }
-
-  ngOnInit() {}
  
   toggleBusSeats(index){
     this.show[index] = !this.show[index];

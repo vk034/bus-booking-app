@@ -1,0 +1,61 @@
+<form [formGroup]="passengerForm" (ngSubmit)="onSubmit()">
+  <div class="col-lg-7">
+    <mat-form-field>
+      <mat-label>Primary Passenger Name</mat-label>
+      <input type="text" matInput formControlName="pPName" [ngClass]="{'is-invalid':isValidFormSubmitted && inputs.pPName.errors}" />
+      <div *ngIf="inputs.pPName.errors && isValidFormSubmitted">
+        <div *ngIf="inputs.pPName.errors.required">
+          Passenger Name is required
+        </div>
+      </div>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Passenger Email</mat-label>
+      <input type="email" matInput formControlName="pEmail" [ngClass]="{'is-invalid':isValidFormSubmitted && inputs.pEmail.errors}" />
+      <div *ngIf="inputs.pEmail.errors && isValidFormSubmitted">
+        <div *ngIf="inputs.pEmail.errors.required">
+          Email id required
+        </div>
+      </div>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Passenger Phone</mat-label>
+      <input type="text" matInput formControlName="pPhone" [ngClass]="{'is-invalid':isValidFormSubmitted && inputs.pPhone.errors}" />
+      <div *ngIf="inputs.pPhone.errors && isValidFormSubmitted">
+        <div *ngIf="inputs.pPhone.errors.required">
+          phone id required
+        </div>
+        <div *ngIf="inputs.pPhone.errors.minlength">
+          Enter valid phone number
+        </div>
+        <div *ngIf="inputs.pPhone.errors.maxlength">
+          Enter valid phone number
+        </div>
+      </div>
+    </mat-form-field>
+    <br>
+    <button mat-button color="accent" type="submit">Submit</button>
+    <table mat-table class="mat-elevation-z10">
+      <ng-container matColumnDef="Gender">
+        <th mat-header-cell> Gender </th>
+        <td mat-cell> </td>
+        <!--<td mat-footer-cell *matFooterCellDef> Total </td> -->
+      </ng-container>
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell> Name </th>
+        <td mat-cell> {{pPName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Age">
+        <th mat-header-cell> Cost </th>
+        <td mat-cell> </td>
+      </ng-container>
+      <ng-container matColumnDef="SeatNo.">
+        <th mat-header-cell> Seat No </th>
+        <td mat-cell> </td>
+      </ng-container>
+    </table>
+  </div>
+  <br>
+</form>

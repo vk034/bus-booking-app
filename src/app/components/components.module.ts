@@ -5,6 +5,12 @@ import { RoutingModule } from '../routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 
+import {
+  MatIconModule,
+  MatToolbarModule,
+  MatButtonModule
+} from '@angular/material';
+
 @NgModule({
   declarations: [
     NavbarComponent, 
@@ -12,11 +18,17 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     CommonModule,
-    RoutingModule
+    RoutingModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   exports: [
     NavbarComponent, 
-    FooterComponent
+    FooterComponent,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule
   ]
 })
 export class ComponentsModule { }
