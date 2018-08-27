@@ -1,33 +1,44 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BussesListComponent } from './busses-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatCardModule,
   MatButtonModule,
   MatIconModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatSelectModule, 
+  MatInputModule
 } from '@angular/material';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
+import { BussesListComponent } from './busses-list.component';
 import { SeatlayoutComponent } from './seatlayout/seatlayout.component';
+import { GetPassengerListComponent } from './get-passenger-list/get-passenger-list.component';
 
 @NgModule({
   declarations: [ 
-    BussesListComponent, SeatlayoutComponent 
+    BussesListComponent, 
+    SeatlayoutComponent, 
+    GetPassengerListComponent 
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatCheckboxModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ],
   exports: [
-    BussesListComponent,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCheckboxModule
+    BussesListComponent
   ]
 })
 export class BussesListModule { }

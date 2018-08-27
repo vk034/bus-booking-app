@@ -24,74 +24,78 @@
         </div>
       </div>
       <div class="col-lg-10">
-        <div *ngFor="let bus of filterBusList; let i=index">
-          <mat-card>
-            <div class="row">
-              <div class="col-md-3 travelName">
-                <span>
-                  <i class="fa fa-bus"></i>&nbsp;{{bus.travelName}}</span>
-              </div>
-              <div class="col-md-2 boardTime">
-                <span>
-                  <i class="fa fa-clock-o"></i>&nbsp;{{bus.bordingTime}}</span>
-              </div>
-              <div class="col-md-2 dropTime">
-                <span>
-                  <i class="fa fa-clock-o"></i>&nbsp;{{bus.dropingTime}}</span>
-              </div>
-              <div class="col-md-2 travelTime">
-                <span>06h 30m</span>
-              </div>
-              <div class="col-md-1 totalCost">
-                <span>
-                  <i class="fa fa-inr"></i>&nbsp;{{bus.fare}}</span>
-              </div>
-              <div class="col-md-2 default">
-                <span>41 Seats available</span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3 default">
-                <span>{{bus.busType}}</span>
-              </div>
-              <div class="col-md-2 default">
-                <span>
-                  <i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;{{bus.source}}</span>
-              </div>
-              <div class="col-md-2 default">
-                <span>
-                  <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{bus.destination}}</span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-1">
-                  <h6 title="Water Bottle"><i class="fa fa-tint" aria-hidden="true"></i></h6>
-              </div>
-              <div class="col-md-1">
-                  <h6><i class="fa fa-wifi" aria-hidden="true"></i></h6>
-              </div>
-              <div class="col-md-1">
-                  <h6><i class="fa fa-plug" aria-hidden="true"></i></h6>
-              </div>
-              <div class="col-md-1">
-                  <h6><i class="fa fa-bed" aria-hidden="true"></i></h6>
-              </div>
-              <div class="col-md-1">
-                  <h6><i class="fa fa-film" aria-hidden="true"></i></h6>
-              </div>
-            </div>
-            
-            <button mat-raised-button class="btn btn-info pull-right" (click)="toggle(i)">View Seats</button>
-            <div class="clearfix"></div>
-          </mat-card>
-          <br>
+        <div *ngFor="let bus of filterBusList; let index = index">
           <div class="row">
-            <div class="col-lg-5" style="width: 40%;">
-                <app-seatlayout *ngIf="show[i]"></app-seatlayout>
+            <div class="col-lg-12">
+                <mat-card>
+                    <div class="row">
+                      <div class="col-md-3 travelName">
+                        <span>
+                          <i class="fa fa-bus"></i>&nbsp;{{bus.travelName}}</span>
+                      </div>
+                      <div class="col-md-2 boardTime">
+                        <span>
+                          <i class="fa fa-clock-o"></i>&nbsp;{{bus.boardingTime}}</span>
+                      </div>
+                      <div class="col-md-2 dropTime">
+                        <span>
+                          <i class="fa fa-clock-o"></i>&nbsp;{{bus.dropingTime}}</span>
+                      </div>
+                      <div class="col-md-2 travelTime">
+                        <span>06h 30m</span>
+                      </div>
+                      <div class="col-md-1 totalCost">
+                        <span>
+                          <i class="fa fa-inr"></i>&nbsp;{{bus.fare}}</span>
+                      </div>
+                      <div class="col-md-2 default">
+                        <span>41 Seats available</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3 default">
+                        <span>{{bus.busType}}</span>
+                      </div>
+                      <div class="col-md-2 default">
+                        <span>
+                          <i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;{{bus.source}}</span>
+                      </div>
+                      <div class="col-md-2 default">
+                        <span>
+                          <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{bus.destination}}</span>
+                      </div>
+                    </div>
+                    <div class="row" style="width: 200px;">
+                      <div class="col-md-1" *ngIf="bus.waterBottle">
+                          <h6 title="Water Bottle"><i class="fa fa-tint" aria-hidden="true"></i></h6>
+                      </div>
+                      <div class="col-md-1" *ngIf="bus.wifi">
+                          <h6 title="WiFi"><i class="fa fa-wifi" aria-hidden="true"></i></h6>
+                      </div>
+                      <div class="col-md-1" *ngIf="bus.chargingPoints">
+                          <h6 title="Charging Points"><i class="fa fa-plug" aria-hidden="true"></i></h6>
+                      </div>
+                      <div class="col-md-1" *ngIf="bus.blanket">
+                          <h6 title="Blanket"><i class="fa fa-bed" aria-hidden="true"></i></h6>
+                      </div>
+                      <div class="col-md-1" *ngIf="bus.movie">
+                          <h6 title="Movie"><i class="fa fa-film" aria-hidden="true"></i></h6>
+                      </div>
+                    </div>
+                    
+                    <button mat-raised-button class="btn btn-info pull-right" (click)="toggleBusSeats(index)">View Seats</button>
+                    <div class="clearfix"></div>
+                </mat-card>
             </div>
           </div>
-          <br>
-        </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <br>
+              <app-seatlayout *ngIf="show[index]"></app-seatlayout>
+              <br>
+            </div>
+          </div>
+        </div><!-- //Bus List Loop -->
       </div>
     </div>
   </div>

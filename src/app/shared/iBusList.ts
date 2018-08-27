@@ -13,8 +13,9 @@ export interface BusList {
     journeyID: number,
     source: string,
     destination: string,
-    bordingTime: string,
+    boardingTime: string,
     dropingTime: string,
     travelDate: Date,
-    fare: number
+    fare: number,
+    isAC: boolean
 }

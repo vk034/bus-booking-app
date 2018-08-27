@@ -1,0 +1,15 @@
+mat-toolbar {
+    background: #544D43;
+    color: #fff;
+    height: 40px;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #ffffff;
+}
