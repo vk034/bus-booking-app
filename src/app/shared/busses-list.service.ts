@@ -3,7 +3,7 @@ import { BusList } from './iBusList';
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -11,7 +11,8 @@ import { catchError } from 'rxjs/operators';
 })
 export class BussesListService {
 
-  busListApi = "api/bussesList";
+  // busListApi = 'http://127.0.0.1:58721/api/BusList';
+  busListApi = 'api/bussesList';
   private searchData:Object;
   private searchDataSource = new BehaviorSubject<Object>(this.searchData);
   observeSearchData = this.searchDataSource.asObservable();
@@ -25,7 +26,7 @@ export class BussesListService {
 
   getBusList(): Observable<BusList[]> {
     return this.http.get<BusList[]>(this.busListApi).pipe(
-      //tap(data => console.log(JSON.stringify(data.))),
+      tap(data => console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );
   }

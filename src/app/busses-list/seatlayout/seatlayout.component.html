@@ -7,6 +7,9 @@
         <mat-grid-tile (click)="chooseSeat(seat)" *ngIf="seat.seatNo" [ngStyle]="{'background-color': !seat.seatStatus? 'red':seatsChoose.includes(seat.seatNo)? '#17A2B8':'#ADD8E6','cursor':'pointer'}">{{seat.seatNo}}</mat-grid-tile>
       </div>
     </mat-grid-list>
+    <div>
+      kdjflkdsfkjj
+    </div>
   </div>
   <form [formGroup]="passengerForm" (ngSubmit)="onSubmit()">
     <div class="col-lg-8">
