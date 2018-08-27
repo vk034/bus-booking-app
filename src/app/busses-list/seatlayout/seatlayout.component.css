@@ -1,3 +1,10 @@
 mat-grid-tile {
-    background: lightblue;
-  }
+  background: lightblue;
+}
+
+form table {
+  width: 100%;
+}
+form table td {
+  padding: 10px;
+}
