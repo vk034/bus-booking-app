@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
           if (!(this.datePicker._selected)) {
             this.datePicker.open();
           } else {
-            let traveldate = new DatePipe('en-IN').transform(this.doj.value,'dd/MM/yyyy');
+            let traveldate = new DatePipe('en-IN').transform(this.doj.value,'yyyy-MM-dd');
             this.bussesListService.setSearchData({
               "source": this.from.value,
               "destination": this.to.value,

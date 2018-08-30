@@ -2,6 +2,10 @@ mat-grid-tile {
   background: lightblue;
 }
 
+mat-header-cell {
+  font-weight: bold;
+}
+
 form table {
   width: 100%;
 }
