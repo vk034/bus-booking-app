@@ -14,13 +14,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { BussesListComponent } from './busses-list.component';
 import { SeatlayoutComponent } from './seatlayout/seatlayout.component';
-import { GetPassengerListComponent } from './get-passenger-list/get-passenger-list.component';
 
 @NgModule({
   declarations: [ 
     BussesListComponent, 
-    SeatlayoutComponent, 
-    GetPassengerListComponent 
+    SeatlayoutComponent
   ],
   imports: [
     CommonModule,

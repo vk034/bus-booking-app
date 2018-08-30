@@ -22,7 +22,6 @@ export class SeatlayoutComponent implements OnInit {
 
   isValidFormSubmitted = false;
   passengerForm: FormGroup;
-  // displayForm:boolean=false;
   cols:string[] = ["Gender", "Name", "Age", "Seat No"];
   passengerData:PassengerDetails[]=[];
   datasource = new MatTableDataSource(this.passengerData);
@@ -92,10 +91,16 @@ export class SeatlayoutComponent implements OnInit {
   }
 
   onSubmit(){
-    this.isValidFormSubmitted = true;
-    if (this.passengerForm.invalid) {
-      return;
+    if(this.seatsChoose.length >= 1) {
+      this.isValidFormSubmitted = true;
+      if (this.passengerForm.invalid) {
+        alert('Invalid From');
+        return;
+      }else {
+        alert('Submitted\n'+JSON.stringify(this.passengerForm.value));
+      }
+    }else {
+      alert('Please choose atleast one seat..!!');
     }
-    console.log(JSON.stringify(this.passengerForm.value));
   }
 }
