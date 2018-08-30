@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { FormBuilder, Validators, FormGroup, FormArray } from "@angular/forms";
 import { MatTableDataSource } from '@angular/material/';
 
 export interface PassengerDetails {
@@ -16,7 +16,6 @@ export interface PassengerDetails {
 })
 export class SeatlayoutComponent implements OnInit {
   seatNumber: any = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,"","","","","","","","","",21,"",22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40];
-  // forbidnumbers = [""];
   seatsBooked: any = [1,2,5];
   seats = [];
   seatsChoose: any = [];
@@ -24,13 +23,11 @@ export class SeatlayoutComponent implements OnInit {
   isValidFormSubmitted = false;
   passengerForm: FormGroup;
   // displayForm:boolean=false;
-  cols:string[] = ["Gender","Name","Age","SeatNo"];
+  cols:string[] = ["Gender", "Name", "Age", "Seat No"];
   passengerData:PassengerDetails[]=[];
-
   datasource = new MatTableDataSource(this.passengerData);
-  selectedGender:string = "male";
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     for(let i in this.seatNumber){
@@ -47,8 +44,13 @@ export class SeatlayoutComponent implements OnInit {
     this.passengerForm= this.fb.group({
       pPName: ['',Validators.required],
       pEmail: ['',[Validators.required, Validators.email]],
-      pPhone: ['',[Validators.required, Validators.maxLength(10), Validators.minLength(10),Validators.pattern('[0-9]+')]]
+      pPhone: ['',[Validators.required, Validators.maxLength(10), Validators.minLength(10),Validators.pattern('[0-9]+')]],
+      passengerArray: this.fb.array([])
     });
+  }
+
+  get passengerArray(){
+    return this.passengerForm.get('passengerArray') as FormArray;
   }
 
   get inputs(){
@@ -58,11 +60,17 @@ export class SeatlayoutComponent implements OnInit {
   chooseSeat(seat: any){
     if(seat.seatStatus){
       let seatid = this.seatsChoose.indexOf(seat.seatNo);
+      console.log("Seat no : "+ seat.seatNo);
+      let index = (<FormArray>this.passengerForm.get('passengerArray')).controls.findIndex(x => x.value.Seat === seat.seatNo);
       if(seatid > -1){
-        let index;
         this.seatsChoose.splice(seatid, 1);
+
         this.passengerData.filter(item=>{if(item.SeatNo == seat.seatNo.toString()){ index=this.passengerData.indexOf(item);}});
         this.passengerData.splice(index,1);
+
+        const control = <FormArray>this.passengerForm.controls['passengerArray'];
+        control.removeAt(index); //To Remove seat from formarray
+
         this.datasource = new MatTableDataSource(this.passengerData);
       }else{
         if(this.seatsChoose.length == 4){
@@ -70,10 +78,16 @@ export class SeatlayoutComponent implements OnInit {
           return;
         }
         this.seatsChoose.push(seat.seatNo);
-        this.passengerData.push({Name:"",Age: "", Gender: "", SeatNo: seat.seatNo.toString()});
+        this.passengerArray.push(this.fb.group({
+          Gender:'',
+          Name:'',
+          Age:'',
+          Seat:seat.seatNo
+        }));
+        this.passengerData.push({Name: "",Age: "", Gender: "", SeatNo: seat.seatNo.toString()});
         this.datasource = new MatTableDataSource(this.passengerData);
       }
-      console.log(this.seatsChoose);
+      // console.log(this.seatsChoose);
     }
   }
 

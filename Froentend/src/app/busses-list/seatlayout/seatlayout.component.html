@@ -3,7 +3,6 @@
     <mat-grid-list cols="10" rowHeight="1:1">
       <div *ngFor="let seat of seats">
         <mat-grid-tile *ngIf="!seat.seatNo" hidden>&nbsp</mat-grid-tile>
-        <!-- <mat-grid-tile (click)="chooseSeat(seat)" *ngIf="forbidnumbers.indexOf(seat)==-1" [ngStyle]="{'background-color': seatsChoose.indexOf(seat) > -1? '#17A2B8':'#ADD8E6','cursor':'pointer'}" >{{seat}}</mat-grid-tile> -->
         <mat-grid-tile (click)="chooseSeat(seat)" *ngIf="seat.seatNo" [ngStyle]="{'background-color': !seat.seatStatus? 'red':seatsChoose.includes(seat.seatNo)? '#17A2B8':'#ADD8E6','cursor':'pointer'}">{{seat.seatNo}}</mat-grid-tile>
       </div>
     </mat-grid-list>
@@ -18,8 +17,7 @@
           <td>
             <mat-form-field>
               <mat-label>Primary Passenger Name</mat-label>
-              <input type="text" matInput formControlName="pPName" [ngClass]="{'is-invalid':isValidFormSubmitted && inputs.pPName.errors}"
-              />
+              <input type="text" matInput formControlName="pPName" [ngClass]="{'is-invalid':isValidFormSubmitted && inputs.pPName.errors}"/>
               <div *ngIf="inputs.pPName.errors && isValidFormSubmitted">
                 <div *ngIf="inputs.pPName.errors.required">
                   Passenger Name is required
@@ -30,8 +28,7 @@
           <td>
             <mat-form-field>
               <mat-label>Passenger Email</mat-label>
-              <input type="email" matInput formControlName="pEmail" [ngClass]="{'is-invalid':isValidFormSubmitted && inputs.pEmail.errors}"
-              />
+              <input type="email" matInput formControlName="pEmail" [ngClass]="{'is-invalid':isValidFormSubmitted && inputs.pEmail.errors}"/>
               <div *ngIf="inputs.pEmail.errors && isValidFormSubmitted">
                 <div *ngIf="inputs.pEmail.errors.required">
                   Email id required
@@ -42,8 +39,7 @@
           <td>
             <mat-form-field>
               <mat-label>Passenger Phone</mat-label>
-              <input type="text" matInput formControlName="pPhone" [ngClass]="{'is-invalid':isValidFormSubmitted && inputs.pPhone.errors}"
-              />
+              <input type="text" matInput formControlName="pPhone" [ngClass]="{'is-invalid':isValidFormSubmitted && inputs.pPhone.errors}"/>
               <div *ngIf="inputs.pPhone.errors && isValidFormSubmitted">
                 <div *ngIf="inputs.pPhone.errors.required">
                   phone id required
@@ -60,43 +56,51 @@
         </tr>
         <tr>
           <td colspan="3">
-            <!-- Passenger List Table -->
-            <mat-table #table class="table table-responsive table-bordered table-sm" [dataSource]="datasource">
-              <ng-container matColumnDef="Gender">
-                <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <mat-form-field>
-                    <mat-select [value]="selectedGender">
-                      <mat-option value="male">male</mat-option>
-                      <mat-option value="female">female</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </mat-cell>
-              </ng-container>
+              <ng-container formArrayName="passengerArray"  >
+                  <ng-container> 
+                      <mat-table #table class="table table-bordered table-sm" [dataSource]="datasource">
+                          <mat-header-row *matHeaderRowDef="cols"></mat-header-row>
+                          <mat-row *matRowDef="let row; columns: cols;"></mat-row>
 
-              <ng-container matColumnDef="Name">
-                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <input matInput placeholder="Name" type="text">
-                </mat-cell>
-              </ng-container>
+                          <ng-container matColumnDef="Gender">
+                            <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+                            <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index" >
+                              <mat-form-field style="width: 100px;">
+                                <mat-select placeholder="Gender" formControlName="Gender" required>
+                                  <mat-option value="male">Male</mat-option>
+                                  <mat-option value="female">Female</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </mat-cell>
+                          </ng-container>
+           
+                          <ng-container matColumnDef="Name">
+                            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                            <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                              <mat-form-field style="width: 100px;">
+                                  <input matInput placeholder="Name" type="text" formControlName="Name" required>
+                              </mat-form-field>
+                            </mat-cell>
+                          </ng-container>		
 
-              <ng-container matColumnDef="Age">
-                <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <input matInput placeholder="Age" type="text"> </mat-cell>
-              </ng-container>
+                          <ng-container matColumnDef="Age">
+                            <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
+                            <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                              <mat-form-field style="width: 100px;">
+                                  <input matInput placeholder="Age" type="text" formControlName="Age" required>
+                              </mat-form-field>
+                            </mat-cell >
+                          </ng-container>
 
-              <ng-container matColumnDef="SeatNo">
-                <mat-header-cell *matHeaderCellDef> SeatNo </mat-header-cell>
-                <mat-cell *matCellDef="let element">
-                  <mat-label>{{element.SeatNo}}</mat-label>
-                </mat-cell>
+                          <ng-container matColumnDef="Seat No">
+                            <mat-header-cell *matHeaderCellDef> Seat No </mat-header-cell>
+                            <mat-cell *matCellDef="let element; let index = index">
+                                <mat-label >{{element.SeatNo}}</mat-label>
+                            </mat-cell>
+                          </ng-container>		
+                    </mat-table>
+                  </ng-container>               
               </ng-container>
-
-              <mat-header-row *matHeaderRowDef="cols"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: cols;"></mat-row>
-            </mat-table>
           </td>
         </tr>
         <tr><td colspan="3"><button mat-button color="accent" type="submit">Submit</button></td></tr>
